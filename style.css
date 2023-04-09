@@ -48,6 +48,19 @@ body {
     padding-bottom: 3cm;
 }
 
+h1{
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center;
+    color: black;
+}
+
+p{
+    font-family: 'Source Sans Pro', sans-serif;
+    text-align: justify;
+
+}
 
 
 footer {
@@ -82,6 +95,8 @@ ul {
 
 li {
 padding: 1mm;
+font-family: 'Source Sans Pro', sans-serif;
+
 }
 
 ul li a {
