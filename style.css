@@ -50,9 +50,11 @@ body {
 
 .judul{
     font-family: 'Source Sans Pro', sans-serif;
-    font-size: 20px;
+    font-size: 12px;
     font-weight: 700;
     color: black;
+    text-align: center;
+    text-decoration: overline;
     /* background: linear-gradient(to right, #0278ff, #0077b3);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent; */
@@ -67,7 +69,6 @@ h1{
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 2em;
     font-weight: bold;
-    text-align: center;
     color: black;
 }
 
