@@ -58,6 +58,7 @@
 body {
   background-color: #fefeff;
   color: #fff;
+  margin: auto;
 }
 
 
@@ -74,8 +75,8 @@ body {
 button {
   color: white;
   border: none;
-  padding: 7px 7PX;
-  border-radius: 5px;
+  padding: 8px 8PX;
+  border-radius: 6px;
   font-size: 15px;
   cursor: pointer;
   transition: background-color 0.3s ease;
