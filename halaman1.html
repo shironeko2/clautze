@@ -6,6 +6,20 @@
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
+    <div class="loading">
+      <div class="loading-icon"></div>
+      <p class="loadtext">mohon tunggu sebentar...</p>
+    </div>
+
+    <script>
+      // Menampilkan elemen loading selama 10 detik
+      window.onload = function () {
+        setTimeout(function () {
+          document.querySelector('.loading').style.display = 'none';
+        }, 2000);
+      };
+    </script>
+
 	<header>
 		<nav>
 			<ul>
