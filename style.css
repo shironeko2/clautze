@@ -116,24 +116,27 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  text-decoration: none;
+  margin: auto;
 }
 
 .red-button{
-  background-color: #d82020;
-}
-
-button {
   color: white;
+  background-color: #333;
   border: none;
-  padding: 8px 8PX;
+  padding: 8px 6PX;
   border-radius: 6px;
   font-size: 15px;
   cursor: pointer;
   transition: background-color 0.3s ease;
   margin: 5px;
+  text-decoration: none;
+  align-items: center;
+  display: flex;
+  justify-content: center;
 }
 
-button:hover {
+.red-button:hover {
   opacity: 0.8;
   background-color: steelblue;
 }
