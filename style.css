@@ -61,12 +61,14 @@ header {
   color: #fff;
   padding: 1px;
   margin: auto;
+  width: 100%;
 }
 
 nav {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  width: 100%;
 }
 
 ul {
@@ -105,10 +107,11 @@ li {
 
 }
 
-body {
+body html{
   background-color: #fefeff;
   color: #fff;
-  margin: auto;
+  margin: 0;
+  width: 100%;
 }
 
 
@@ -177,6 +180,7 @@ footer {
   color: #fff;
   padding: 30px 0;
   margin: auto;
+  width: 100%;
 }
 
 .footer-container {
