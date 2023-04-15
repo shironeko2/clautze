@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Viewer Gambar</title>
+	<style>
+		.viewer {
+			width: 800px;
+			height: 500px;
+			position: relative;
+			text-align: center;
+  			top: 0;
+  			bottom: 0;
+  			left: 0;
+  			right: 0;
+  			margin: auto;
+		}
+
+		.viewer img {
+			max-width: auto;
+			height: auto;
+			position: absolute;
+			top: 0;
+			left: 0;
+			opacity: 0;
+			transition: opacity 1s ease-in-out;
+			cursor: pointer;
+		}
+
+		.viewer img:first-child {
+			opacity: 1;
+		}
+
+		.viewer .indicator {
+			position: absolute;
+			bottom: 10px;
+			left: 50%;
+			transform: translateX(-50%);
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.viewer .indicator span {
+			display: inline-block;
+			width: 12px;
+			height: 12px;
+			border-radius: 50%;
+			margin: 0 5px;
+			background-color: #aaa;
+			cursor: pointer;
+			transition: background-color 0.3s ease-in-out;
+		}
+
+		.viewer .indicator span.active {
+			background-color: #4285f4;
+		}
+	</style>
+</head>
+<body>
+	<div class="viewer">
+		<img src="https://cdn.idntimes.com/content-images/duniaku/post/20200420/sasuke-smile-abcd327fe8d02f98c7e827c6f28d8f3d.jpg" alt="Deskripsi gambar">
+		<img src="https://cdn.idntimes.com/content-images/duniaku/post/20200420/sasuke-smile-abcd327fe8d02f98c7e827c6f28d8f3d.jpg" alt="Deskripsi gambar">
+		<img src="https://cdn.idntimes.com/content-images/duniaku/post/20200420/sasuke-smile-abcd327fe8d02f98c7e827c6f28d8f3d.jpg" alt="Deskripsi gambar">
+		<img src="https://cdn.idntimes.com/content-images/duniaku/post/20200420/sasuke-smile-abcd327fe8d02f98c7e827c6f28d8f3d.jpg" alt="Deskripsi gambar">
+		<div class="indicator">
+			<span class="active"></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+		</div>
+	</div>
+
+	<script>
+		var viewer = document.querySelector('.viewer');
+		var images = viewer.querySelectorAll('img');
+		var indicators = viewer.querySelectorAll('.indicator span');
+		var currentImageIndex = 0;
+
+		// Menambahkan event listener pada setiap gambar
+		for (var i = 0; i < images.length; i++) {
+			images[i].addEventListener('click', function() {
+				currentImageIndex++;
+				if (currentImageIndex >= images.length) {
+					currentImageIndex = 0;
+				}
+				updateViewer();
+			});
+		}
+
+		// Menambahkan event listener pada setiap indicator
+		for (var i = 0; i < indicators.length; i++) {
+			indicators[i].addEventListener('click', function() {
+				currentImageIndex = Array.from(indicators).indexOf(this);
+				updateViewer();
+			});
+		}
+
+		function updateViewer() {
+			// Mengubah opacity gambar yang aktif dan indicator yang aktif
+			for (var i = 0; i < images.length; i++) {
+				if (i === currentImageIndex) {
+					images[i].style.opacity = 1;
+					indicators[i].classList.add('active');
+				} else {
+					images[i].style.opacity = 0;
+					indicators[i].classList.remove('active');
+				}
+			}
+		}
+	</script>
+</body>
+</html>
