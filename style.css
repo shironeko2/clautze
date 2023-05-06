@@ -20,7 +20,7 @@
   }
   /* Atur lebar dan padding pada bagian konten */
   .content {
-    width: 92%;
+    width: auto;
     padding: 5%;
   }
 }
@@ -81,6 +81,8 @@ body{
   color: #fff;
   margin: 0;
   padding: 0;
+  padding-left: 0px;
+  padding-right: 0px;
   width: 100%;
   height: 100%;
 }
