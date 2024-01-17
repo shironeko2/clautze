@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Best Your Notes</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: black;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        textarea {
+            width: 100%;
+            height: 150px;
+            margin-bottom: 15px;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            resize: none;
+        }
+        .btn {
+            margin-right: 10px;
+        }
+        .button-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background-color: #ffffff;
+            margin: 15px 0;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        li button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        li:hover {
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Buat Catatan Disini</h1>
+        <div class="button-container mb-3">
+            <button class="btn btn-primary" onclick="saveNote()">Simpan</button>
+            <button class="btn btn-danger" onclick="clearNotes()">Reset</button>
+            <button class="btn btn-success" onclick="exportNotes()">Download Catatan</button>
+        </div>
+
+        <textarea id="noteInput" class="form-control" placeholder="Tulis catatan Anda di sini..."></textarea>
+        
+        <!-- Elemen tersembunyi untuk mendownload catatan -->
+        <a id="downloadLink" download="catatan.txt"></a>
+<br>
+        <h2><center>Daftar Catatan<center></h2>
+        <ul id="noteList"></ul>
+    </div>
+
+    <script>
+        function saveNote() {
+            var noteInput = document.getElementById('noteInput');
+            var noteList = document.getElementById('noteList');
+            var notes = JSON.parse(localStorage.getItem('notes')) || [];
+
+            // Periksa apakah textarea kosong sebelum menyimpan
+            if (noteInput.value.trim() === '') {
+                alert('Anda belum menulis sesuatu. Silakan tulis catatan terlebih dahulu.');
+                return;
+            }
+
+            notes.push(noteInput.value);
+            localStorage.setItem('notes', JSON.stringify(notes));
+            displayNotes();
+            noteInput.value = '';
+            document.getElementById('downloadLink').style.display = 'inline';
+        }
+
+        function displayNotes() {
+            var noteList = document.getElementById('noteList');
+            var notes = JSON.parse(localStorage.getItem('notes')) || [];
+            noteList.innerHTML = '';
+            for (var i = 0; i < notes.length; i++) {
+                var li = document.createElement('li');
+                li.className = 'mb-3';
+                li.textContent = notes[i];
+                var deleteButton = document.createElement('button');
+                deleteButton.className = 'btn btn-danger';
+                deleteButton.textContent = 'Hapus';
+                deleteButton.onclick = function(index) {
+                    return function() {
+                        deleteNote(index);
+                    }
+                }(i);
+                li.appendChild(deleteButton);
+                noteList.appendChild(li);
+            }
+        }
+
+        function deleteNote(index) {
+            var notes = JSON.parse(localStorage.getItem('notes')) || [];
+            notes.splice(index, 1);
+            localStorage.setItem('notes', JSON.stringify(notes));
+            displayNotes();
+        }
+
+        function clearNotes() {
+            localStorage.removeItem('notes');
+            displayNotes();
+            document.getElementById('downloadLink').style.display = 'none';
+        }
+
+        function exportNotes() {
+            var notes = JSON.parse(localStorage.getItem('notes')) || [];
+            var fileContent = notes.join('\n');
+            var blob = new Blob([fileContent], { type: 'text/plain' });
+            var downloadLink = document.getElementById('downloadLink');
+            downloadLink.href = URL.createObjectURL(blob);
+            downloadLink.click();
+            URL.revokeObjectURL(downloadLink.href);
+        }
+
+        displayNotes();
+    </script>
+</body>
+</html>
