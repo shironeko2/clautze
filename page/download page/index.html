@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download/Upload</title>
+    <link rel="stylesheet" href="../download page/style.css">
+    <link rel="shortcut icon" href="/clautze/favicon.ico" type="image/x-icon" />
+</head>
+<body>
+    <!--Tampilan Loading Page-->
+    <div class="loading">
+      <div class="loading-icon"></div><br><br>
+      <p class="loadtext">Harus sabar yaa...</p>
+    </div>
+    <script>
+      // Menampilkan elemen loading selama 1 detik
+      window.onload = function () {
+        setTimeout(function () {
+          document.querySelector('.loading').style.display = 'none';
+        }, 1000);
+      };
+    </script>
+
+    <!--Tampilan Isi-->
+    <div class="container">
+        <div class="card">
+            <img src="/clautze/resource/gdrive.png" alt="Card 1">
+            <div class="card-content">
+                <h2>Download / Simpan</h2>
+                <p></p>
+                <a href="https://drive.google.com/drive/folders/1jj_UJQ_Lqwn4tD-DJgqfoQfASKfIKAgQ?usp=sharing" class="button">Click Me</a>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://via.placeholder.com/300" alt="Card 2">
+            <div class="card-content">
+                <h2>Card 2</h2>
+                <p>This is a description for card 2.</p>
+                <a href="https://example.com" class="button">Click Me</a>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://via.placeholder.com/300" alt="Card 3">
+            <div class="card-content">
+                <h2>Card 3</h2>
+                <p>This is a description for card 3.</p>
+                <a href="https://example.com" class="button">Click Me</a>
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <footer>
+        <div><a href="/clautze/index.html" class="button">Kembali</a></div>
+    </footer>
+</body>
+</html>
