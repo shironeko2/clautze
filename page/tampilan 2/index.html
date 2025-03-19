@@ -1,238 +1,277 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Soft UI Navbar</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clautzer</title>
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <style>
-        /* Global Styles */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f8f9fa;
-            transition: background 0.3s, color 0.3s;
-        }
-        .dark-mode {
-            background-color: #1a1a1a;
-            color: #fff;
-        }
+      /* Global Styles */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f8f9fa;
+        transition: background 0.3s, color 0.3s;
+      }
+      .dark-mode {
+        background-color: #1a1a1a;
+        color: #fff;
+      }
 
-        /* Navbar */
-        .navbar {
-            background: #222;
-            padding: 15px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-            position: relative;
-        }
-        .navbar .logo {
-            font-size: 20px;
-            font-weight: bold;
-            color: #fff;
-        }
+      /* Navbar */
+      .navbar {
+        background: #222;
+        padding: 15px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        position: relative;
+      }
+      .navbar .logo {
+        font-size: 20px;
+        font-weight: bold;
+        color: #fff;
+      }
+      .nav-links {
+        list-style: none;
+        display: flex;
+        gap: 20px;
+        padding: 0;
+        margin: 0;
+      }
+      .nav-links a {
+        text-decoration: none;
+        font-size: 16px;
+        color: #ccc;
+        transition: 0.3s;
+      }
+      .nav-links a:hover {
+        color: #fff;
+      }
+
+      /* Toggle Mode */
+      .toggle-mode {
+        padding: 10px 15px;
+        font-size: 16px;
+        background: #222;
+        border: none;
+        border-radius: 5px;
+        color: #fff;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+      .toggle-mode:hover {
+        background: #222;
+      }
+      .dark-mode .toggle-mode {
+        background: #222;
+      }
+
+      /* Burger Menu */
+      .burger {
+        display: none;
+        font-size: 24px;
+        color: #fff;
+        cursor: pointer;
+        background: none;
+        border: none;
+      }
+
+      @media (max-width: 768px) {
         .nav-links {
-            list-style: none;
-            display: flex;
-            gap: 20px;
-            padding: 0;
-            margin: 0;
+          display: none;
+          flex-direction: column;
+          width: 100%;
+          background: #222;
+          position: absolute;
+          top: 60px;
+          left: 0;
+          text-align: center;
+          padding: 10px 0;
         }
-        .nav-links a {
-            text-decoration: none;
-            font-size: 16px;
-            color: #ccc;
-            transition: 0.3s;
+        .nav-links.active {
+          display: flex;
         }
-        .nav-links a:hover {
-            color: #fff;
-        }
-
-        /* Toggle Mode */
-        .toggle-mode {
-            padding: 10px 15px;
-            font-size: 16px;
-            background: #007bff;
-            border: none;
-            border-radius: 5px;
-            color: #fff;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        .toggle-mode:hover {
-            background: #0056b3;
-        }
-        .dark-mode .toggle-mode {
-            background: #00aaff;
-        }
-
-        /* Burger Menu */
         .burger {
-            display: none;
-            font-size: 24px;
-            color: #fff;
-            cursor: pointer;
-            background: none;
-            border: none;
+          display: block;
         }
-        
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-                flex-direction: column;
-                width: 100%;
-                background: #222;
-                position: absolute;
-                top: 60px;
-                left: 0;
-                text-align: center;
-                padding: 10px 0;
-            }
-            .nav-links.active {
-                display: flex;
-            }
-            .burger {
-                display: block;
-            }
-        }
+      }
 
-        /* Main Layout */
+      /* Main Layout */
+      .main-container {
+        display: flex;
+        height: calc(100vh - 100px);
+        padding: 20px;
+        gap: 20px;
+      }
+      .archive {
+        flex: 1;
+        background: #e9ecef;
+        overflow-y: auto;
+        max-height: 80vh;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      }
+      .archive button {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        background: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+      .archive button:hover {
+        background: #0056b3;
+      }
+      .content {
+        flex: 3;
+        background: #ffffff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      }
+      .dark-mode .archive,
+      .dark-mode .content {
+        background: #333;
+        color: #fff;
+      }
+
+      @media (max-width: 768px) {
         .main-container {
-            display: flex;
-            height: calc(100vh - 100px);
-            padding: 20px;
-            gap: 20px;
+          flex-direction: column;
         }
-        .archive {
-            flex: 1;
-            background: #e9ecef;
-            overflow-y: auto;
-            max-height: 80vh;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-        }
-        .archive button {
-            display: block;
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            background: #007bff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        .archive button:hover {
-            background: #0056b3;
-        }
-        .content {
-            flex: 3;
-            background: #ffffff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-        }
-        .dark-mode .archive, .dark-mode .content {
-            background: #333;
-            color: #fff;
-        }
-        
-        @media (max-width: 768px) {
-            .main-container {
-                flex-direction: column;
-            }
-        }
+      }
 
-        /* Footer */
-        .footer {
-            background: #222;
-            color: #fff;
-            text-align: center;
-            padding: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-        .footer-links {
-            display: flex;
-            gap: 15px;
-        }
-        .footer-links a {
-            color: #ccc;
-            text-decoration: none;
-            font-size: 14px;
-        }
-        .footer-links a:hover {
-            color: #fff;
-        }
-        .clock {
-            font-size: 18px;
-            font-weight: bold;
-            color: #ffc107;
-        }
+      /* Footer */
+      .footer {
+        background: #222;
+        color: #fff;
+        text-align: center;
+        padding: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      .footer-links {
+        display: flex;
+        gap: 15px;
+      }
+      .footer-links a {
+        color: #ccc;
+        text-decoration: none;
+        font-size: 14px;
+      }
+      .footer-links a:hover {
+        color: #fff;
+      }
+      .clock {
+        font-size: 18px;
+        font-weight: bold;
+        color: #ffc107;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <nav class="navbar">
-        <div class="logo">Soft UI</div>
-        <button class="burger" onclick="toggleMenu()">☰</button>
-        <ul class="nav-links">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Contact</a></li>
-        </ul>
-        <button class="toggle-mode" onclick="toggleMode()">Toggle Mode</button>
+      <div class="logo">Clautzer</div>
+      <button class="burger" onclick="toggleMenu()">☰</button>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+      <button class="toggle-mode" onclick="toggleMode()">🌙</button>
     </nav>
 
     <div class="main-container">
-        <div class="archive">
-            <h3><center>Archive</center></h3>
-            <button onclick="updateContent('Post 1')">Post 1</button>
-            <button onclick="updateContent('Post 2')">Post 2</button>
-            <button onclick="updateContent('Post 3')">Post 3</button>
-        </div>
-        <div class="content" id="main-content">
-            <h2>Main Content</h2>
-            <p>Select an archive post to display content.</p>
-        </div>
+      <div class="archive">
+        <h3><center>Archive</center></h3>
+        <button onclick="updateContent('Post 1')">Postingan 1</button>
+        <button onclick="updateContent('Post 2')">Postingan 2</button>
+        <button onclick="updateContent('Post 3')">Postingan 3</button>
+      </div>
+      <div class="content" id="main-content">
+        <h2><center>Welcome to my website</center></h2>
+        <p>Apapun yang saya buat, akan saya tuangkan didalam website ini untuk kedepannya. Jadi mungkin akan banyak  pembaruan dan maintanance</p>
+      </div>
     </div>
 
     <footer class="footer">
-        <div class="footer-links">
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms of Service</a>
-            <a href="#">Contact Us</a>
-        </div>
-        <div class="clock" id="clock"></div>
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Contact Us</a>
+      </div>
+      <div class="clock" id="clock"></div>
     </footer>
 
     <script>
-        function updateContent(postTitle) {
-            document.getElementById("main-content").innerHTML = `<h2>${postTitle}</h2><p>Content of ${postTitle}.</p>`;
+      function updateContent(postTitle) {
+        let content = '';
+
+        if (postTitle === 'Post 1') {
+          content = `
+            <h2><center>Ahmad Wildan</h2>
+            <p>Halo Perkenalkan Nama Saya Ahmad Wildan</p>
+            <ul>
+            <li>Poin pertama dari pembahasan</li>
+            <li>Poin kedua yang lebih mendalam</li>
+            <li>Poin ketiga dengan contoh kasus</li>
+            </ul>
+        `;
+        } else if (postTitle === 'Post 2') {
+          content = `
+            <h2>${postTitle}</h2>
+            <p>Artikel ini membahas tentang perkembangan AI dan dampaknya terhadap dunia kerja.</p>
+            <img src="https://via.placeholder.com/400" alt="Ilustrasi AI">
+        `;
+        } else if (postTitle === 'Post 3') {
+          content = `
+            <h2>${postTitle}</h2>
+            <p>Ini adalah berita terbaru tentang dunia cybersecurity dan bagaimana organisasi dapat mengamankan data mereka.</p>
+        `;
         }
+
+        document.getElementById('main-content').innerHTML = content;
+      }
+
       function toggleMode() {
-            document.body.classList.toggle("dark-mode");
-            localStorage.setItem("dark-mode", document.body.classList.contains("dark-mode") ? "enabled" : "disabled");
-        }
+        document.body.classList.toggle('dark-mode');
+        const isDarkMode = document.body.classList.contains('dark-mode');
+        localStorage.setItem('dark-mode', document.body.classList.contains('dark-mode') ? 'enabled' : 'disabled');
 
-        function toggleMenu() {
-            document.querySelector(".nav-links").classList.toggle("active");
-        }
+         // Mengubah ikon tombol berdasarkan mode saat ini
+            document.querySelector('.toggle-mode').innerHTML = isDarkMode ? '☀️' : '🌙';
 
-        function updateClock() {
-            const now = new Date();
-            document.getElementById("clock").innerText = now.toLocaleTimeString();
+                   // Mengecek localStorage untuk mempertahankan mode terakhir
+        window.onload = function() {
+            if (localStorage.getItem('dark-mode') === 'enabled') {
+                document.body.classList.add('dark-mode');
+                document.querySelector('.toggle-mode').innerHTML = '☀️ Light Mode';
+            }
         }
+      }
 
-        setInterval(updateClock, 1000);
-        updateClock();
+      function toggleMenu() {
+        document.querySelector('.nav-links').classList.toggle('active');
+      }
+
+      function updateClock() {
+        const now = new Date();
+        document.getElementById('clock').innerText = now.toLocaleTimeString();
+      }
+
+      setInterval(updateClock, 1000);
+      updateClock();
     </script>
-</body>
+  </body>
 </html>

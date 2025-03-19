@@ -1,0 +1,97 @@
+<!-- Versi HTML & CSS -->
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UI Comparison</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            background-color: #1e1e1e;
+        }
+        .header .logo {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .search {
+            background: #333;
+            padding: 8px 12px;
+            border-radius: 8px;
+            border: none;
+            color: white;
+        }
+        .container {
+            text-align: center;
+            padding: 20px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            margin: auto;
+            padding-top: 20px;
+        }
+        .card {
+            background: #1e1e1e;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .card:hover {
+            transform: scale(1.05);
+        }
+        .card a {
+            text-decoration: none;
+            color: white;
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+        .card h3 {
+            margin: 0 0 10px;
+            font-size: 18px;
+        }
+        .card p {
+            font-size: 14px;
+            color: #bbbbbb;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">FMHY</div>
+        <input type="text" class="search" placeholder="Search...">
+    </div>
+    <div class="container">
+        <h2>Or browse these pages ✨</h2>
+        <div class="grid">
+            <div class="card"><a href="#"><h3>Adblocking / Privacy</h3><p>Learn how to block ads, trackers and other nasty things.</p></a></div>
+            <div class="card"><a href="#"><h3>Artificial Intelligence</h3><p>Explore the world of AI and machine learning.</p></a></div>
+            <div class="card"><a href="#"><h3>Streaming</h3><p>Stream, download, torrent and binge all your favourite movies and shows!</p></a></div>
+            <div class="card"><a href="#"><h3>Listening</h3><p>Stream, download and torrent songs, podcasts and more!</p></a></div>
+            <div class="card"><a href="#"><h3>Gaming</h3><p>Download and play all your favourite games or emulate some old but gold ones!</p></a></div>
+            <div class="card"><a href="#"><h3>Reading</h3><p>Whether you're a bookworm, otaku or comic book fan, you'll be able to find your favourite literature here for free!</p></a></div>
+            <div class="card"><a href="#"><h3>Downloading</h3><p>Download all your favourite software, movies, tv shows, music, games and more!</p></a></div>
+            <div class="card"><a href="#"><h3>Torrenting</h3><p>Download your favourite media using the BitTorrent protocol.</p></a></div>
+        </div>
+    </div>
+</body>
+</html>
